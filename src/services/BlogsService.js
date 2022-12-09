@@ -11,10 +11,15 @@ export class BlogsService {
 
         AppState.blogs = res.data.map(b => new Blog(b))
 
+    }
+    async getActiveBlog(blogId) {
+        const res = await api.get('api/blogs/' + blogId)
+
+        logger.log(res.data)
+        AppState.activeBlog = res.data
+
 
     }
-
-
 }
 
 export const blogsService = new BlogsService()
